@@ -21,6 +21,37 @@ document.addEventListener("DOMContentLoaded", () => {
     return `₱${Number(n).toFixed(0)}`;
   }
 
+const sliderTrack = document.querySelector('.slider-track');
+const dotsContainer = document.querySelector('.slider-dots');
+const cards = document.querySelectorAll('.brew-card');
+
+const cardsPerView = 3;
+const totalSlides = Math.ceil(cards.length / cardsPerView);
+let currentIndex = 0;
+
+function createDots() {
+  dotsContainer.innerHTML = '';
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => moveToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function moveToSlide(index) {
+  currentIndex = index;
+  const offset = -(index * 100);
+  sliderTrack.style.transform = `translateX(${offset}%)`;
+
+  document.querySelectorAll('.slider-dots button').forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === index);
+  });
+}
+
+createDots();
+
+
   function updateCartUI() {
     if (!cartBody || !cartTotalEl) return;
     cartBody.innerHTML = "";

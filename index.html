@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agos Coffee - Home</title>
+    <link rel="icon" type="image/png" href="assets/logo/AGOS-FAVICON.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mediaquery.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="page-wrapper">
+        <!-- Desktop Header -->
+        <header class="site-header desktop-header">
+          <div class="header-left">
+            <a href="index.html">
+              <img
+                src="assets/logo/AGOS-LOGO.svg"
+                alt="Agos Coffee logo"
+                class="logo"
+              />
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="main-nav">
+              <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product-list.html">Products</a></li>
+                <li><a href="feature.html">Feature</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="header-right">
+            <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
+              <img
+                src="assets/icons/CART-QTY.svg"
+                alt="Cart"
+                class="cart-img"
+              />
+              <span id="cart-count" class="cart-count">0</span>
+            </button>
+          </div>
+        </header>
+      </div>
+
+      <!-- Mobile Header -->
+      <header class="site-header mobile-header">
+        <!-- Logo -->
+        <a href="index.html">
+          <img
+            src="assets/logo/AGOS-LOGO.png"
+            alt="Agos Coffee logo"
+            class="logo"
+          />
+        </a>
+
+        <!-- Cart Button -->
+        <button id="cart-toggle-mobile" class="cart-btn" aria-label="Open cart">
+          <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
+          <span id="cart-count-mobile" class="cart-count">0</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="hero-section">
+          <div class="hero-left">
+            <h1 class="hero-title">
+              Need that <br />
+              <em>caffeine flow?</em> <br />
+              Pour it at Agos.
+            </h1>
+            <div class="hero-cta">
+              <a href="product-list.html" class="btn btn-primary"
+                >Order Today</a
+              >
+              <p class="hero-subtext">
+                Join us for a fresh cup at Agos Coffee <br />
+                where cozy vibes and caffeine meet.
+              </p>
+            </div>
+          </div>
+          <div class="hero-right">
+            <img
+              src="assets/icons/HERO-ELEMENT.png"
+              alt="Coffee Illustration"
+              class="hero-img"
+            />
+          </div>
+        </section>
+
+        <section class="about-section">
+          <div class="about-container">
+            <div class="about-left">
+              <h2 class="about-title">About Agos Coffee</h2>
+              <p class="about-text">
+                Agos Coffee began in 2023 with a simple goal, to create a space
+                where people could enjoy good coffee, relax, and feel at home.
+                Located in the heart of San Fernando, Pampanga, our café was
+                founded by <strong>Ar. Miguel Nozawa</strong>, whose love for
+                design and community inspired every detail of the shop's cozy,
+                welcoming vibe.
+              </p>
+              <p class="about-text">
+                We believe in the perfect balance of flavor, ambiance, and
+                connection. Whether you're dropping by for your morning caffeine
+                fix, meeting friends, or just looking for a quiet corner to
+                study, Agos Coffee is a space that flows with comfort,
+                creativity, and warmth — just like our drinks.
+              </p>
+            </div>
+
+            <div class="about-right">
+              <img
+                src="assets/icons/OWNER.svg"
+                alt="Founder Ar. Miguel Nozawa"
+                class="about-img"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="brew-section">
+          <div class="brew-container">
+            <!-- Header -->
+            <div class="brew-header">
+              <h2 class="brew-title">Brew Guides</h2>
+              </p>
+            </div>
+
+            <!-- Slider Wrapper -->
+            <div class="slider">
+              <div class="slider-track">
+                <!-- Each Brew Guide -->
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/ESPRESSO.svg" alt="Espresso" class="brew-img" />
+                  </div>
+                  <h3>Espresso</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img
+                    src="assets/icons/AUTOMATIC-BREWER.svg"
+                    alt="Automatic Brewer"
+                    class="brew-img"
+                  />
+                  </div>
+                  <h3>Automatic Brewer</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/KALITA-WAVE.svg" alt="Kalita Wave" class="brew-img" />
+                  </div>
+                  <h3>Kalita Wave</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img
+                    src="assets/icons/FRENCH-PRESS.svg"
+                    alt="French Press"
+                    class="brew-img"
+                  />
+                  </div>
+                  <h3>French Press</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/CHEMEX.svg" alt="Chemex" class="brew-img" />
+                  </div>
+                  <h3>Chemex</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/AEROPRESS.svg" alt="AeroPress" class="brew-img" />
+                  </div>
+                  <h3>AeroPress</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/FLASH-BREW.svg" alt="Flash Brew" class="brew-img" />
+                  </div>
+                  <h3>Flash Brew</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/COLD-BREW.svg" alt="Cold Brew" class="brew-img" />
+                  </div>
+                  <h3>Cold Brew</h3>
+                </div>
+                <div class="brew-card">
+                  <div class="brew-visual">
+                  <img src="assets/icons/HARIO-V60.svg" alt="V60" class="brew-img" />
+                  </div>
+                  <h3>Hario V60</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="slider-dots"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; 2020 Agos Coffee. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
