@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/png" href="assets/logo/AGOS-FAVICON.svg" />
+    <title>Order Complete - Agos Coffee</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="checkout-page">
+    <!-- Desktop Header -->
+    <header class="site-header desktop-header">
+      <div class="header-left">
+        <a href="index.html">
+          <img src="assets/logo/AGOS-LOGO.png" alt="Agos Coffee logo" class="logo" />
+        </a>
+        <div class="brand">
+          <h1>Agos Coffee</h1>
+          <small class="tagline">Need that caffeine flow</small>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="search-wrap">
+          <img src="assets/icons/search-icon-black.svg" alt="search" class="search-img" />
+          <input
+            type="search"
+            id="search"
+            placeholder="Search products..."
+            aria-label="Search products"
+          />
+        </div>
+        <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
+          <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Header -->
+    <header class="site-header mobile-header">
+      <div class="mobile-search-wrapper">
+        <button
+          id="mobile-search-btn"
+          class="mobile-search-btn"
+          aria-label="Search"
+        >
+          <img src="assets/icons/SEARCH-ICON-WHITE.svg" alt="Search" />
+        </button>
+        <input
+          type="text"
+          id="mobile-search"
+          class="mobile-search-input"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+      </div>
+
+      <!-- Logo -->
+      <a href="index.html">
+        <img src="assets/logo/AGOS-LOGO.png" alt="Agos Coffee logo" class="logo" />
+      </a>
+
+      <!-- Cart Button -->
+      <button id="cart-toggle-mobile" class="cart-btn" aria-label="Open cart">
+        <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
+      </button>
+    </header>
+
+    <main class="thank-you">
+      <img src="assets/icons/THANK-YOU.svg" alt="Thank You" class="thank-you-img" />
+      <h1>Thank you!</h1>
+      <p>Your order has been placed successfully.</p>
+      <a href="product-list.html" class="continue-link">← Continue browsing</a>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 Agos Coffee. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
