@@ -391,7 +391,7 @@ main {
   height: fit-content;
   height: 85vh;
   position: sticky;
-  top: 20px;  
+  top: 60px;  
 }
 .cart-header {
   display: flex;
@@ -401,6 +401,7 @@ main {
   padding-bottom: 12px;
   margin-bottom: 12px;
 }
+
 .cart-header h3 {
   margin: 0;
   font-size: 17px;
@@ -424,7 +425,7 @@ main {
   text-align: center;
   color: #666;
   padding: 30px 10px;
-  margin: auto; /* centers inside cart-body when empty */
+  margin: auto; 
 }
 .empty-illustration h4 {
   margin: 6px 0;
@@ -694,7 +695,7 @@ main {
   display: none;
 }
 
-@media (max-width: 1130px) {
+@media (max-width: 1200px) {
   .container {
     flex-direction: column;
     padding: 0 14px;

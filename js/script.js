@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (cart.length === 0) {
       cartBody.innerHTML = `
-        <div class="empty-illustration">
-          <img src="assets/icons/CART-PANEL.svg" alt="Empty Cart" class="empty-cart-img" />
-          <h4>Hungry?</h4>
-          <p>You haven't added anything to your cart!</p>
-        </div>`;
+      <div class="empty-illustration">
+        <img src="assets/icons/CART-PANEL.svg" alt="Empty Cart" class="empty-cart-img" />
+        <h4>Hungry?</h4>
+        <p>You haven't added anything to your cart!</p>
+      </div>`;
       cartTotalEl.innerText = formatPeso(0);
       updateCartCount(0);
       checkoutBtn?.classList.remove("enabled");
@@ -43,29 +43,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemEl = document.createElement("div");
       itemEl.className = "cart-item";
       itemEl.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" />
-        <div class="cart-item-details">
-          <h4 class="cart-item-name">${item.name}</h4>
-          <div class="cart-item-price">${formatPeso(item.price)}</div>
-          <div class="qty-controls">
-            <button class="qty-btn decrease" data-name="${
-              item.name
-            }" style="background: var(--primary);">
-              ${
-                item.qty === 1
-                  ? `<img src="assets/icons/TRASH-ICON.svg" width="14" height="14" alt="Remove">`
-                  : `<span class="minus-sign">-</span>`
-              }
-            </button>
-            <div class="qty-count">${item.qty}</div>
-            <button class="qty-btn increase" data-name="${
-              item.name
-            }" style="background: var(--primary);">
-              <span class="plus-sign">+</span>
-            </button>
-          </div>
+      <img src="${item.img}" alt="${item.name}" />
+      <div class="cart-item-details">
+        <h4 class="cart-item-name">${item.name}</h4>
+        <div class="cart-item-price">${formatPeso(item.price)}</div>
+        <div class="qty-controls">
+          <button class="qty-btn decrease" data-name="${
+            item.name
+          }" style="background: var(--primary);">
+            ${
+              item.qty === 1
+                ? `<img src="assets/icons/TRASH-ICON.svg" width="14" height="14" alt="Remove">`
+                : `<span class="minus-sign">-</span>`
+            }
+          </button>
+          <div class="qty-count">${item.qty}</div>
+          <button class="qty-btn increase" data-name="${
+            item.name
+          }" style="background: var(--primary);">
+            <span class="plus-sign">+</span>
+          </button>
         </div>
-      `;
+      </div>
+    `;
       cartBody.appendChild(itemEl);
     });
 
@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutBtn.classList.add("enabled");
     }
 
-    // wire up qty buttons
     cartBody
       .querySelectorAll(".increase")
       .forEach((btn) =>
@@ -91,6 +90,24 @@ document.addEventListener("DOMContentLoaded", () => {
       .forEach((btn) =>
         btn.addEventListener("click", () => changeQty(btn.dataset.name, -1))
       );
+  }
+
+  if (checkoutBtn && checkoutModal && cancelCheckout && confirmCheckout) {
+    checkoutBtn.addEventListener("click", () => {
+      if (cart.length > 0) checkoutModal.style.display = "flex";
+    });
+
+    cancelCheckout.addEventListener("click", () => {
+      checkoutModal.style.display = "none";
+    });
+
+    confirmCheckout.addEventListener("click", () => {
+      checkoutModal.style.display = "none";
+      // Optionally clear cart or redirect
+      // cart = [];
+      // updateCartUI();
+      window.location.href = "checkout.html";
+    });
   }
 
   function changeQty(name, delta) {
@@ -180,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (value) {
       let hasMatch = false;
-      const addedNames = new Set(); 
+      const addedNames = new Set();
 
       sections.forEach((sec) => (sec.style.display = "none"));
 
@@ -213,18 +230,18 @@ document.addEventListener("DOMContentLoaded", () => {
     <img src="assets/icons/NO-RESULTS.svg" alt="No results" />
     <p>No products found</p>
   `;
-        noResults.style.display = "flex"; 
-        searchContainer.style.display = "none"; 
+        noResults.style.display = "flex";
+        searchContainer.style.display = "none";
       } else {
-        noResults.style.display = "none"; 
-        searchContainer.style.display = ""; 
+        noResults.style.display = "none";
+        searchContainer.style.display = "";
       }
     } else {
       // Reset: show all original sections
       sections.forEach((sec) => (sec.style.display = ""));
       searchHeading.style.display = "none";
       searchContainer.style.display = "none";
-      noResults.style.display = "none"; 
+      noResults.style.display = "none";
     }
   }
 
