@@ -267,6 +267,103 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const slider = document.querySelector(".testimonial-slider");
+  const leftArrow = document.querySelector(".testimonial-arrow.left");
+  const rightArrow = document.querySelector(".testimonial-arrow.right");
+
+  const slides = document.querySelectorAll(".testimonial-slide");
+  const slideCount = slides.length;
+
+  let showingSlide = 0;
+  let autoSlideTimer;
+
+  // Clone first slide and append at the end for smooth loop
+  const firstClone = slides[0].cloneNode(true);
+  slider.appendChild(firstClone);
+
+  function goToSlide(index, animate = true) {
+    if (!animate) slider.style.transition = "none";
+    else slider.style.transition = "transform 0.5s ease-in-out";
+
+    slider.style.transform = `translateX(-${index * 100}%)`;
+    showingSlide = index;
+  }
+
+  // Next slide
+  function nextSlide() {
+    if (showingSlide >= slideCount) {
+      // Jump instantly to original first slide (no animation)
+      goToSlide(0, false);
+      // Then slide to second slide
+      setTimeout(() => goToSlide(1), 20);
+    } else {
+      goToSlide(showingSlide + 1);
+    }
+  }
+
+  // Previous slide
+  function prevSlide() {
+    if (showingSlide <= 0) {
+      // Jump instantly to clone slide
+      goToSlide(slideCount, false);
+      setTimeout(() => goToSlide(slideCount - 1), 20);
+    } else {
+      goToSlide(showingSlide - 1);
+    }
+  }
+
+  // Start auto-slide
+  function startAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+  }
+
+  // Arrow navigation
+  rightArrow.addEventListener("click", () => {
+    nextSlide();
+    startAutoSlide();
+  });
+
+  leftArrow.addEventListener("click", () => {
+    prevSlide();
+    startAutoSlide();
+  });
+
+  // Initialize
+  goToSlide(0);
+  startAutoSlide();
+
+  const faqQuestions = document.querySelectorAll(".faq-question");
+
+faqQuestions.forEach((question) => {
+  question.addEventListener("click", () => {
+    const answer = question.nextElementSibling;
+
+    if (answer.style.maxHeight && answer.style.maxHeight !== "0px") {
+      // collapse
+      answer.style.maxHeight = "0";
+      answer.style.paddingTop = "0";
+      answer.style.paddingBottom = "0";
+    } else {
+      // close all others
+      document.querySelectorAll(".faq-answer").forEach((a) => {
+        a.style.maxHeight = "0";
+        a.style.paddingTop = "0";
+        a.style.paddingBottom = "0";
+      });
+
+      // open current
+      const extraPadding = 32; // adjust this if needed (top+bottom padding + p margins)
+      answer.style.maxHeight = answer.scrollHeight + extraPadding + "px";
+      answer.style.paddingTop = "1rem";
+      answer.style.paddingBottom = "1rem";
+    }
+  });
+});
+
+
   const cardsPerView = 3;
   const totalSlides = Math.ceil(cards.length / cardsPerView);
   let currentIndex = 0;
