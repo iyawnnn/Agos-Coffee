@@ -66,29 +66,137 @@
 
       <main>
         <section class="hero-section">
-          <div class="hero-left">
-            <h1 class="hero-title">
-              Need that <br />
-              <em>caffeine flow?</em> <br />
-              Pour it at Agos.
-            </h1>
-            <div class="hero-cta">
-              <a href="product-list.html" class="btn btn-primary"
-                >Order Today</a
-              >
-              <p class="hero-subtext">
-                Join us for a fresh cup at Agos Coffee <br />
-                where cozy vibes and caffeine meet.
-              </p>
+          <!-- Video Background -->
+          <video class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/video/HERO-VIDEO.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Hero Content -->
+          <div class="hero-content">
+            <div class="hero-left">
+              <h1 class="hero-title">
+                Need that <br />
+                <em>caffeine flow?</em> <br />
+                Pour it at Agos.
+              </h1>
+
+              <div class="hero-cta">
+                <a href="product-list.html" class="btn btn-primary"
+                  >Order Today</a
+                >
+                <p class="hero-subtext">
+                  Join us for a fresh cup at Agos Coffee <br />
+                  where cozy vibes and caffeine meet.
+                </p>
+              </div>
             </div>
           </div>
-          <div class="hero-right">
-            <img
-              src="assets/icons/HERO-ELEMENT.png"
-              alt="Coffee Illustration"
-              class="hero-img"
-            />
+        </section>
+
+        <section class="features-section">
+          <div class="features-container">
+            <div class="feature-item">
+              <img src="assets/icons/FRESH-COFFEE.svg" alt="Fresh Coffee" />
+              <p>Fresh Coffee</p>
+            </div>
+            <div class="feature-item">
+              <img src="assets/icons/COZY-SPACE.svg" alt="Cozy Space" />
+              <p>Cozy Space</p>
+            </div>
+            <div class="feature-item">
+              <img
+                src="assets/icons/QUALITY-INGREDIENTS.svg"
+                alt="Quality Ingredients"
+              />
+              <p>Quality Ingredients</p>
+            </div>
+            <div class="feature-item">
+              <img
+                src="assets/icons/FRIENDLY-SERVICE.svg"
+                alt="Friendly Service"
+              />
+              <p>Friendly Service</p>
+            </div>
           </div>
+        </section>
+
+        <section class="favorites-section">
+          <!-- Title Container with border -->
+          <div class="favorites-title-container">
+            <h2 class="favorites-title">Customer Favorites</h2>
+          </div>
+
+          <section class="favorites-section">
+            <div class="favorites-container">
+              <div class="favorites-grid">
+                <!-- Favorite Card -->
+                <div class="favorite-card">
+                  <img
+                    src="assets/products/AGOS-SPECIALTY-2.svg"
+                    alt="Agos Specialty"
+                  />
+                  <p class="favorite-main-category">SPECIALTY</p>
+                  <h3>Agos Specialty</h3>
+                  <p class="favorite-sub-category">Espresso | Milk | Matcha</p>
+                  <img
+                    src="assets/icons/5-STARS.svg"
+                    alt="Rating"
+                    class="favorite-rating"
+                  />
+                </div>
+
+                <div class="favorite-card">
+                  <img
+                    src="assets/products/SPANISH-LATTE-2.svg"
+                    alt="Spanish Latte"
+                  />
+                  <p class="favorite-main-category">COFFEE</p>
+                  <h3>Spanish Latte</h3>
+                  <p class="favorite-sub-category">
+                    Espresso | Milk | Cinnamon
+                  </p>
+                  <img
+                    src="assets/icons/4.5-STARS.svg"
+                    alt="Rating"
+                    class="favorite-rating"
+                  />
+                </div>
+
+                <div class="favorite-card">
+                  <img
+                    src="assets/products/MATCHA-OATSIDE-2.svg"
+                    alt="Matcha Oatside"
+                  />
+                  <p class="favorite-main-category">MATCHA</p>
+                  <h3>Matcha Oatside</h3>
+                  <p class="favorite-sub-category">Matcha | Milk | Oatside</p>
+                  <img
+                    src="assets/icons/5-STARS.svg"
+                    alt="Rating"
+                    class="favorite-rating"
+                  />
+                </div>
+
+                <div class="favorite-card">
+                  <img
+                    src="assets/products/PINK-QUENCHER-2.svg"
+                    alt="Pink Quencher"
+                  />
+                  <p class="favorite-main-category">NON-COFFEE</p>
+                  <h3>Pink Quencher</h3>
+                  <p class="favorite-sub-category">
+                    Strawberry | Lychee | Milk
+                  </p>
+                  <img
+                    src="assets/icons/4-STARS.svg"
+                    alt="Rating"
+                    class="favorite-rating"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
 
         <section class="about-section">
@@ -122,77 +230,103 @@
           </div>
         </section>
 
+        <!-- Header -->
+        <div class="brew-title-container">
+          <h2 class="brew-title">Brew Guides</h2>
+        </div>
         <section class="brew-section">
           <div class="brew-container">
-            <!-- Header -->
-            <div class="brew-header">
-              <h2 class="brew-title">Brew Guides</h2>
-              </p>
-            </div>
-
             <!-- Slider Wrapper -->
             <div class="slider">
               <div class="slider-track">
                 <!-- Each Brew Guide -->
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/ESPRESSO.svg" alt="Espresso" class="brew-img" />
+                    <img
+                      src="assets/icons/ESPRESSO.svg"
+                      alt="Espresso"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Espresso</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img
-                    src="assets/icons/AUTOMATIC-BREWER.svg"
-                    alt="Automatic Brewer"
-                    class="brew-img"
-                  />
+                    <img
+                      src="assets/icons/AUTOMATIC-BREWER.svg"
+                      alt="Automatic Brewer"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Automatic Brewer</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/KALITA-WAVE.svg" alt="Kalita Wave" class="brew-img" />
+                    <img
+                      src="assets/icons/KALITA-WAVE.svg"
+                      alt="Kalita Wave"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Kalita Wave</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img
-                    src="assets/icons/FRENCH-PRESS.svg"
-                    alt="French Press"
-                    class="brew-img"
-                  />
+                    <img
+                      src="assets/icons/FRENCH-PRESS.svg"
+                      alt="French Press"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>French Press</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/CHEMEX.svg" alt="Chemex" class="brew-img" />
+                    <img
+                      src="assets/icons/CHEMEX.svg"
+                      alt="Chemex"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Chemex</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/AEROPRESS.svg" alt="AeroPress" class="brew-img" />
+                    <img
+                      src="assets/icons/AEROPRESS.svg"
+                      alt="AeroPress"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>AeroPress</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/FLASH-BREW.svg" alt="Flash Brew" class="brew-img" />
+                    <img
+                      src="assets/icons/FLASH-BREW.svg"
+                      alt="Flash Brew"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Flash Brew</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/COLD-BREW.svg" alt="Cold Brew" class="brew-img" />
+                    <img
+                      src="assets/icons/COLD-BREW.svg"
+                      alt="Cold Brew"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Cold Brew</h3>
                 </div>
                 <div class="brew-card">
                   <div class="brew-visual">
-                  <img src="assets/icons/HARIO-V60.svg" alt="V60" class="brew-img" />
+                    <img
+                      src="assets/icons/HARIO-V60.svg"
+                      alt="V60"
+                      class="brew-img"
+                    />
                   </div>
                   <h3>Hario V60</h3>
                 </div>
