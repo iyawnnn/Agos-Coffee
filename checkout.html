@@ -11,9 +11,22 @@
   <body class="checkout-page">
     <div class="page-wrapper">
       <!-- Desktop Header -->
-      <header class="site-header desktop-header">
+      <header class="site-header">
+        <!-- Left side -->
         <div class="header-left">
-          <a href="index.html">
+          <a href="product-list.html" class="order-btn">Order Now</a>
+        </div>
+
+        <!-- Center (logo + nav links) -->
+        <div class="header-center">
+          <nav class="main-nav left-nav">
+            <ul class="nav-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="product-list.html">Products</a></li>
+            </ul>
+          </nav>
+
+          <a href="index.html" class="logo-link">
             <img
               src="assets/logo/AGOS-LOGO.svg"
               alt="Agos Coffee logo"
@@ -21,17 +34,15 @@
             />
           </a>
 
-          <!-- Navigation Links -->
-          <nav class="main-nav">
+          <nav class="main-nav right-nav">
             <ul class="nav-list">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="product-list.html">Products</a></li>
               <li><a href="feature.html">Feature</a></li>
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
           </nav>
         </div>
 
+        <!-- Right side -->
         <div class="header-right">
           <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
             <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />

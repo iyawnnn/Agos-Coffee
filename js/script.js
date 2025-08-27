@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let cart = []; // { name, price, img, qty }
 
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector(".site-header");
+    if (window.scrollY > 20) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
+  });
+
   function formatPeso(n) {
     return `₱${Number(n).toFixed(0)}`;
   }
@@ -135,16 +141,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (count > 0) {
       if (cartCountDesktop) {
         cartCountDesktop.textContent = count;
-        cartCountDesktop.style.display = "inline";
+        cartCountDesktop.style.display = "inline-flex"; // show when > 0
       }
       if (cartCountMobile) {
         cartCountMobile.textContent = count;
-        cartCountMobile.style.display = "inline";
+        cartCountMobile.style.display = "inline-flex";
       }
     } else {
       if (cartCountDesktop) {
         cartCountDesktop.textContent = "";
-        cartCountDesktop.style.display = "none";
+        cartCountDesktop.style.display = "none"; // fully hide
       }
       if (cartCountMobile) {
         cartCountMobile.textContent = "";
@@ -331,38 +337,38 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
   });
 
-  // Initialize
   goToSlide(0);
   startAutoSlide();
 
   const faqQuestions = document.querySelectorAll(".faq-question");
 
-faqQuestions.forEach((question) => {
-  question.addEventListener("click", () => {
-    const answer = question.nextElementSibling;
+  faqQuestions.forEach((question) => {
+    question.addEventListener("click", () => {
+      const answer = question.nextElementSibling;
 
-    if (answer.style.maxHeight && answer.style.maxHeight !== "0px") {
-      // collapse
-      answer.style.maxHeight = "0";
-      answer.style.paddingTop = "0";
-      answer.style.paddingBottom = "0";
-    } else {
-      // close all others
-      document.querySelectorAll(".faq-answer").forEach((a) => {
-        a.style.maxHeight = "0";
-        a.style.paddingTop = "0";
-        a.style.paddingBottom = "0";
-      });
+      if (answer.style.maxHeight && answer.style.maxHeight !== "0px") {
+        answer.style.maxHeight = "0";
+        answer.style.paddingTop = "0";
+        answer.style.paddingBottom = "0";
+        question.classList.remove("active");
+      } else {
+        document.querySelectorAll(".faq-answer").forEach((a) => {
+          a.style.maxHeight = "0";
+          a.style.paddingTop = "0";
+          a.style.paddingBottom = "0";
+        });
+        document
+          .querySelectorAll(".faq-question")
+          .forEach((q) => q.classList.remove("active"));
 
-      // open current
-      const extraPadding = 32; // adjust this if needed (top+bottom padding + p margins)
-      answer.style.maxHeight = answer.scrollHeight + extraPadding + "px";
-      answer.style.paddingTop = "1rem";
-      answer.style.paddingBottom = "1rem";
-    }
+        const extraPadding = 32; 
+        answer.style.maxHeight = answer.scrollHeight + extraPadding + "px";
+        answer.style.paddingTop = "1rem";
+        answer.style.paddingBottom = "1rem";
+        question.classList.add("active");
+      }
+    });
   });
-});
-
 
   const cardsPerView = 3;
   const totalSlides = Math.ceil(cards.length / cardsPerView);
