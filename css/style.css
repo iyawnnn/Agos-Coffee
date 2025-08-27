@@ -677,19 +677,6 @@ main {
   background: var(--primary-dark, #d9a441);
 }
 
-/* footer */
-.site-footer {
-  background-color: var(--primary);
-  text-align: center;
-  padding: 5px;
-  font-size: 14px;
-  color: var(--white);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
-}
-
 /* Checkout Page */
 .checkout-page {
   background: var(--bg);
@@ -697,6 +684,10 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+main.thank-you {
+  height: 100vh;
 }
 
 .thank-you {
@@ -707,6 +698,7 @@ main {
   align-items: center;
   text-align: center;
   padding: 40px 20px;
+  max-height: 1200px;
 }
 
 .thank-you-img {
@@ -1506,6 +1498,7 @@ main {
   justify-content: space-between;
   max-width: 1200px;
   margin: auto;
+  margin-bottom: 70px;
 }
 
 .footer-links {
@@ -1818,3 +1811,28 @@ main {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
 }
 
+/* ==========================
+   GOOGLE MAP SECTION
+========================== */
+.contact-map {
+  width: 100%;
+  background: var(--bg);
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 800px; 
+  aspect-ratio: 16 / 9; 
+  border: 2px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

@@ -98,35 +98,61 @@
 
           <!-- Right form panel -->
           <div class="contact-form-wrapper">
-            <form class="form-control">
+            <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              class="form-control"
+            >
+              <input
+                type="hidden"
+                name="access_key"
+                value="aae1092f-cdba-4886-9a47-b4353142b43a"
+              />
+
               <h2 class="contact-form-title">Contact Us</h2>
 
               <!-- Name -->
               <div class="input-field">
-                <input type="text" class="input" required />
+                <input type="text" name="name" class="input" required />
                 <label class="label">Full Name</label>
               </div>
 
               <!-- Email -->
               <div class="input-field">
-                <input type="email" class="input" required />
+                <input type="email" name="email" class="input" required />
                 <label class="label">Email</label>
               </div>
 
               <!-- Phone -->
               <div class="input-field">
-                <input type="tel" class="input" required />
+                <input type="tel" name="phone" class="input" required />
                 <label class="label">Phone Number</label>
               </div>
 
               <!-- Message -->
               <div class="input-field">
-                <textarea class="input textarea" required></textarea>
+                <textarea
+                  name="message"
+                  class="input textarea"
+                  required
+                ></textarea>
                 <label class="label">Message</label>
               </div>
 
               <button type="submit" class="submit-btn">SEND MESSAGE</button>
             </form>
+          </div>
+        </section>
+
+        <!-- Google Maps Section -->
+        <section class="contact-map">
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3852.719694509281!2d120.65012907587995!3d15.063612565571717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f760b166a851%3A0x4bb63edc99505d49!2sAgos%20Coffee!5e0!3m2!1sen!2sph!4v1756302060586!5m2!1sen!2sph"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </section>
       </main>
