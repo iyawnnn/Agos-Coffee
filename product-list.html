@@ -13,66 +13,87 @@
     />
   </head>
   <body>
-    <div class="page-wrapper">
-      <!-- Desktop Header -->
-      <header class="site-header">
-        <!-- Left side -->
-        <div class="header-left">
-          <a href="product-list.html" class="order-btn">Order Now</a>
-        </div>
+    <header class="site-header">
+      <div class="header-left">
+        <button
+          id="hamburger-toggle"
+          class="hamburger-btn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="sidebar-menu"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
 
-        <!-- Center (logo + nav links) -->
-        <div class="header-center">
-          <nav class="main-nav left-nav">
-            <ul class="nav-list">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="product-list.html">Products</a></li>
-            </ul>
-          </nav>
+        <!-- Optional order button (desktop) -->
+        <a href="product-list.html" class="order-btn">Order Now</a>
+      </div>
 
-          <a href="index.html" class="logo-link">
-            <img
-              src="assets/logo/AGOS-LOGO.svg"
-              alt="Agos Coffee logo"
-              class="logo"
-            />
-          </a>
+      <!-- Center: logo + desktop nav -->
+      <div class="header-center">
+        <nav class="main-nav left-nav">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product-list.html">Products</a></li>
+          </ul>
+        </nav>
 
-          <nav class="main-nav right-nav">
-            <ul class="nav-list">
-              <li><a href="feature.html">Feature</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-          </nav>
-        </div>
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/logo/AGOS-LOGO.svg"
+            alt="Agos Coffee logo"
+            class="logo"
+          />
+        </a>
 
-        <!-- Right side -->
-        <div class="header-right">
-          <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
-            <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
-            <span id="cart-count" class="cart-count">0</span>
-          </button>
-        </div>
-      </header>
-    </div>
+        <nav class="main-nav right-nav">
+          <ul class="nav-list">
+            <li><a href="feature.html">Feature</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
 
-    <!-- Mobile Header -->
-    <header class="site-header mobile-header">
-      <!-- Logo -->
-      <a href="index.html">
-        <img
-          src="assets/logo/AGOS-LOGO.png"
-          alt="Agos Coffee logo"
-          class="logo"
-        />
-      </a>
-
-      <!-- Cart Button -->
-      <button id="cart-toggle-mobile" class="cart-btn" aria-label="Open cart">
-        <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
-        <span id="cart-count-mobile" class="cart-count">0</span>
-      </button>
+      <!-- Right: cart -->
+      <div class="header-right">
+        <button id="cart-toggle" class="cart-btn" aria-label="Open cart">
+          <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
+          <span id="cart-count" class="cart-count">0</span>
+        </button>
+      </div>
     </header>
+
+    <!-- SIDEBAR MENU -->
+    <aside id="sidebar-menu" class="sidebar-menu" aria-hidden="true">
+      <div class="sidebar-header">
+        <a href="index.html" class="logo-link sidebar-logo-link">
+          <img
+            src="assets/logo/AGOS-LOGO.svg"
+            alt="Agos Coffee logo"
+            class="logo sidebar-logo"
+          />
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul class="nav-list sidebar-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product-list.html">Products</a></li>
+          <li><a href="feature.html">Feature</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li>
+            <a
+              href="product-list.html"
+              class="order-btn-mobile sidebar-order-btn"
+              >Order Now</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
 
     <main class="container">
       <section class="content-left">
@@ -879,6 +900,7 @@
       </div>
     </footer>
 
+    <script src="js/hamburger-menu.js"></script>
     <script src="js/script.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -887,13 +909,13 @@
         const closeBtn = document.getElementById("closeNewsletter");
 
         form.addEventListener("submit", (e) => {
-          e.preventDefault(); 
-          modal.style.display = "flex"; 
-          form.reset(); 
+          e.preventDefault();
+          modal.style.display = "flex";
+          form.reset();
         });
 
         closeBtn.addEventListener("click", () => {
-          modal.style.display = "none"; 
+          modal.style.display = "none";
         });
 
         modal.addEventListener("click", (e) => {

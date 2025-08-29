@@ -13,7 +13,9 @@
   --header-height: 90px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -59,6 +61,8 @@ main {
   z-index: 999;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease;
+  height: 95px; /* match body padding-top */
+  box-sizing: border-box;
 }
 
 .site-header.scrolled {
@@ -70,6 +74,23 @@ main {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Layout: Hamburger | Logo | Cart */
+.header-left {
+  display: flex;
+  justify-content: center; /* centers children horizontally */
+  align-items: center; /* centers vertically if needed */
+  gap: 10px; /* optional spacing if multiple elements */
+  flex: 0 0 auto;
 }
 
 .header-center {
@@ -237,6 +258,7 @@ main {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
+  padding-top: 10px;
 }
 
 .filters {
@@ -865,7 +887,7 @@ main.thank-you {
 }
 
 .about-text {
-  font-size: 20px;
+  font-size: clamp(0.9rem, 1.2vw, 1.25rem); /* responsive text */
   color: #f8f8f8;
   line-height: 1.8;
   margin-bottom: 1rem;
@@ -913,11 +935,13 @@ main.thank-you {
 
 .brew-title {
   font-family: "Poppins", sans-serif;
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem); 
   font-weight: 700;
   color: #000;
   margin: 0;
+  text-align: center;
 }
+
 
 .slider {
   overflow: hidden;
@@ -1046,7 +1070,7 @@ main.thank-you {
 }
 
 .favorites-container {
-  width: 100%; 
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1065,18 +1089,18 @@ main.thank-you {
 }
 
 .favorites-title-container {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
 }
 
 .favorites-title {
   font-family: "Poppins", sans-serif;
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 700;
   color: #000;
   margin: 0;
+  text-align: center;
 }
 
 .favorites-grid {
@@ -1117,7 +1141,7 @@ main.thank-you {
 }
 
 .favorite-card h3 {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 2vw, 2rem);
   font-weight: 700;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1125,14 +1149,14 @@ main.thank-you {
 }
 
 .favorite-main-category {
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   font-weight: 400;
   color: #000;
   margin: 0.25rem 0 0;
 }
 
 .favorite-sub-category {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
   color: #000;
   margin: 0.1rem 0 1rem;
 }
@@ -1142,27 +1166,6 @@ main.thank-you {
   height: auto;
   display: block;
   object-fit: contain;
-}
-
-@media (max-width: 900px) {
-  .favorites-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .favorites-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .favorites-header {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .star-icon {
-    width: 60px;
-  }
 }
 
 /* ============================== */
@@ -1176,20 +1179,27 @@ main.thank-you {
   background-color: var(--bg);
 }
 
+.features-container-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .features-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   max-width: 1500px;
   margin: 0 auto;
-  gap: 2rem;
+  gap: clamp(2rem, 5vw, 4rem);
+  flex-wrap: wrap;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  flex: 1;
+  gap: 1rem;
+  flex: 0 0 auto;
 }
 
 .feature-item img {
@@ -1199,29 +1209,13 @@ main.thank-you {
 
 .feature-item p {
   font-family: "Poppins", sans-serif;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
   margin: 0;
+  white-space: nowrap;
 }
 
-@media (max-width: 1024px) {
-  .features-container {
-    display: flex;
-    width: max-content;
-    animation: slide-left 5s linear infinite;
-  }
-
-  .feature-item {
-    flex: 0 0 auto;
-  }
-}
-
-@keyframes slide-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.feature-item.duplicate {
+  display: none;
 }
 
 /* ============================== */
@@ -1231,13 +1225,13 @@ main.thank-you {
   width: 100%;
   background: var(--bg);
   font-family: "Poppins", sans-serif;
-  padding: 4rem 0;
+  padding: 4rem 6rem;
   position: relative;
   overflow: visible;
 }
 
 .testimonials-container {
-  max-width: 1500px;
+  max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -1254,10 +1248,11 @@ main.thank-you {
 
 .testimonials-title {
   font-family: "Poppins", sans-serif;
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 4vw, 3rem); 
   font-weight: 700;
   color: #000;
   margin: 0;
+  text-align: center;
 }
 
 .testimonial-slider {
@@ -1269,21 +1264,22 @@ main.thank-you {
 .testimonial-slide {
   display: flex;
   flex: 0 0 100%;
-  gap: 2rem;
   align-items: center;
   box-sizing: border-box;
+  gap: clamp(0rem, 2vw, 2rem); 
 }
 
 .testimonial-left {
-  flex: 0 0 300px;
+  flex: 0 0 250px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-left: 30px;
 }
 
 .testimonial-img {
-  width: 250px;
-  height: 250px;
+  width: clamp(180px, 18vw, 250px);
+  height: auto;
   object-fit: cover;
 }
 
@@ -1292,22 +1288,22 @@ main.thank-you {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .testimonial-rating {
-  width: 120px;
+  width: clamp(80px, 8vw, 120px);
   height: auto;
 }
 
 .testimonial-message {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem); 
   line-height: 1.5;
   color: #333;
 }
 
 .testimonial-name {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   font-weight: 700;
   color: #000;
   margin: 0;
@@ -1316,48 +1312,59 @@ main.thank-you {
 .testimonial-verification {
   color: #555;
   margin: 0;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
 }
 
 .testimonial-right {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .testimonial-right-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  gap: 0.5rem; 
+  border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 550px;
+  max-width: 250px; 
   border: 2px solid #000;
+  margin-right: 30px;
+  height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .testimonial-product-info {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.25rem;
 }
 
 .testimonial-product-img {
-  width: 150px;
+  width: 90%; 
   height: auto;
   border-radius: 4px;
 }
 
 .testimonial-product-name {
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.2vw, 1.2rem); 
   color: #000;
+  text-align: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .testimonial-order {
+  font-size: clamp(0.9rem, 1vw, 1rem); 
   padding: 0.5rem 1rem;
-  background-color: #fff8e5;
+  background-color: var(--bg);
   border: 2px solid #000;
   border-radius: 5px;
   font-weight: 600;
@@ -1365,6 +1372,7 @@ main.thank-you {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
+  margin-bottom: 0.75rem;
 }
 
 .testimonial-order:hover {
@@ -1418,7 +1426,7 @@ main.thank-you {
 /* ============================== */
 .faq-section {
   width: 100%;
-  padding: 4rem 2rem;
+  padding: clamp(2rem, 5vw, 4rem) 2rem;
   background: #fefcf0;
   font-family: "Poppins", sans-serif;
 }
@@ -1426,53 +1434,57 @@ main.thank-you {
 .faq-container {
   max-width: 900px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .faq-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem); 
   font-weight: 700;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1rem, 3vw, 2rem); 
 }
 
 .faq-item {
-  padding: 1rem 1rem;
-  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box; 
   border-bottom: 2px solid #000;
-  padding: 0;
+  margin: 0;
 }
 
 .faq-question {
   width: 100%;
-  padding: 1rem 0.2rem;
+  padding: clamp(0.8rem, 2vw, 1rem) 2.5rem clamp(0.8rem, 2vw, 1rem) 1rem;
   background: #fefcf0;
   border: none;
   text-align: left;
-  font-size: 1.35rem;
+  font-size: clamp(1rem, 3vw, 1.35rem);
   font-weight: 500;
   cursor: pointer;
   position: relative;
-  margin-top: 10px;
   font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
 }
 
 .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
-  font-size: 1.05 rem;
-  line-height: 1.5;
-  padding-top: 0;
-  padding-bottom: 0;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  line-height: 1.6;
+  padding: 0 clamp(1rem, 3vw, 1.5rem); 
   margin: 0;
   color: #555;
+  box-sizing: border-box;
 }
 
 .faq-question::after {
   content: "+";
   position: absolute;
-  right: 1.5rem;
-  font-size: 1.5rem;
+  right: clamp(1rem, 4vw, 1.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   transition: transform 0.3s;
 }
 
@@ -1481,7 +1493,7 @@ main.thank-you {
 }
 
 .faq-answer p {
-  margin: 0.75rem 0;
+  margin: clamp(0.5rem, 2vw, 0.75rem) 0;
 }
 
 .footer {
@@ -1961,26 +1973,6 @@ main.thank-you {
   border-radius: 20px;
 }
 
-@media (max-width: 900px) {
-  .features-row {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding-inline: 12px;
-  }
-
-  .features-row .feature-text-block,
-  .features-row .feature-image-block {
-    grid-column: auto;
-  }
-
-  .feature-block {
-    min-height: 260px;
-  }
-  .feature-text-inner {
-    text-align: left;
-  }
-}
-
 .scroll-banner {
   width: 100%;
   background: var(--primary);
@@ -2019,16 +2011,6 @@ main.thank-you {
   }
   100% {
     transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 600px) {
-  .scroll-banner-track span {
-    font-size: 0.9rem;
-  }
-  .scroll-banner-track span::after {
-    font-size: 0.9rem;
-    margin-left: 12px;
   }
 }
 
@@ -2126,14 +2108,14 @@ main.thank-you {
 }
 
 .new-product-details span {
-  background: #f0e8dc; 
+  background: #f0e8dc;
   padding: 6px 12px;
   border-radius: 8px;
   font-weight: 500;
 }
 
 .new-product-header {
-  grid-column: 1 / -1; 
+  grid-column: 1 / -1;
   margin-bottom: 30px;
   text-align: left;
 }
@@ -2157,7 +2139,7 @@ main.thank-you {
   font-weight: 700;
   color: #000;
   text-transform: uppercase;
-  margin: 0 0 8px 0; 
+  margin: 0 0 8px 0;
 }
 
 .new-product-title .small-title {
@@ -2171,22 +2153,6 @@ main.thank-you {
   font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 700;
   color: #000;
-}
-
-@media (max-width: 900px) {
-  .new-product-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .new-product-title,
-  .new-product-description {
-    text-align: center;
-  }
-
-  .product-cta {
-    margin: 0 auto;
-  }
 }
 
 .highlight-grid {
@@ -2433,4 +2399,124 @@ section[id="testimonials"] {
 
 section[id="brew-guides"] {
   scroll-margin-top: 220px;
+}
+
+/* Hamburger Button */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-line {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  margin: 3px 0;
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -90%;
+  width: 350px;
+  max-width: 90%;
+  height: 100vh;
+  background: var(--primary);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar-menu.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 0;
+}
+
+.sidebar-logo {
+  display: block;
+  margin: 0 auto;
+  height: 48px;
+  width: auto;
+}
+
+.sidebar-close {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+/* Sidebar nav */
+.sidebar-nav-list {
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-nav-list li {
+  margin: 0;
+}
+
+.sidebar-nav-list a {
+  font-size: 1.125rem;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: color 0.3s ease;
+}
+
+.order-btn-mobile.sidebar-order-btn {
+  margin-top: 2rem;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  padding: 10px 18px;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid #000;
+  font-weight: 600;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }

@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (count > 0) {
       if (cartCountDesktop) {
         cartCountDesktop.textContent = count;
-        cartCountDesktop.style.display = "inline-flex"; 
+        cartCountDesktop.style.display = "inline-flex";
       }
       if (cartCountMobile) {
         cartCountMobile.textContent = count;
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       if (cartCountDesktop) {
         cartCountDesktop.textContent = "";
-        cartCountDesktop.style.display = "none"; 
+        cartCountDesktop.style.display = "none";
       }
       if (cartCountMobile) {
         cartCountMobile.textContent = "";
@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
       { duration: 180, easing: "ease-out" }
     );
   });
-
 
   function runSearch(rawValue) {
     const value = String(rawValue || "")
@@ -357,31 +356,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const cardsPerView = 3;
-  const totalSlides = Math.ceil(cards.length / cardsPerView);
-  let currentIndex = 0;
+  (function () {
+    const brewCards = document.querySelectorAll(".brew-card");
+    const brewSliderTrack = document.querySelector(".slider-track");
+    const brewDotsContainer = document.querySelector(".slider-dots");
 
-  function createDots() {
-    dotsContainer.innerHTML = "";
-    for (let i = 0; i < totalSlides; i++) {
-      const dot = document.createElement("button");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => moveToSlide(i));
-      dotsContainer.appendChild(dot);
+    let currentIndex = 0;
+
+    function getCardsPerView() {
+      if (window.innerWidth <= 600) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3; 
     }
-  }
 
-  function moveToSlide(index) {
-    currentIndex = index;
-    const offset = -(index * 100);
-    sliderTrack.style.transform = `translateX(${offset}%)`;
+    function createBrewDots() {
+      const cardsPerView = getCardsPerView();
+      const totalSlides = Math.ceil(brewCards.length / cardsPerView);
 
-    document.querySelectorAll(".slider-dots button").forEach((dot, idx) => {
-      dot.classList.toggle("active", idx === index);
+      brewDotsContainer.innerHTML = "";
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("button");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => moveToBrewSlide(i));
+        brewDotsContainer.appendChild(dot);
+      }
+    }
+
+    function moveToBrewSlide(index) {
+      const cardsPerView = getCardsPerView();
+      currentIndex = index;
+
+      const offset = -(index * (100 / cardsPerView));
+      brewSliderTrack.style.transform = `translateX(${offset}%)`;
+
+      document.querySelectorAll(".slider-dots button").forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === index);
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      createBrewDots();
+      moveToBrewSlide(0); 
     });
-  }
 
-  createDots();
+    createBrewDots();
+  })();
 
   const mobileSearchWrapper = document.querySelector(".mobile-search-wrapper");
   const mobileSearchBtn = document.getElementById("mobile-search-btn");
