@@ -112,9 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     confirmCheckout.addEventListener("click", () => {
       checkoutModal.style.display = "none";
-      // Optionally clear cart or redirect
-      // cart = [];
-      // updateCartUI();
       window.location.href = "checkout.html";
     });
   }
@@ -141,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (count > 0) {
       if (cartCountDesktop) {
         cartCountDesktop.textContent = count;
-        cartCountDesktop.style.display = "inline-flex"; // show when > 0
+        cartCountDesktop.style.display = "inline-flex"; 
       }
       if (cartCountMobile) {
         cartCountMobile.textContent = count;
@@ -150,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       if (cartCountDesktop) {
         cartCountDesktop.textContent = "";
-        cartCountDesktop.style.display = "none"; // fully hide
+        cartCountDesktop.style.display = "none"; 
       }
       if (cartCountMobile) {
         cartCountMobile.textContent = "";
@@ -159,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Event delegation for all add buttons, original or cloned
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".add-btn");
     if (!btn) return;
@@ -184,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
+
   function runSearch(rawValue) {
     const value = String(rawValue || "")
       .toLowerCase()
@@ -201,7 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
       searchContainer.insertAdjacentElement("beforebegin", searchHeading);
     }
 
-    // Clear previous search results
     searchContainer.innerHTML = "";
 
     if (value) {
@@ -246,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
         searchContainer.style.display = "";
       }
     } else {
-      // Reset: show all original sections
       sections.forEach((sec) => (sec.style.display = ""));
       searchHeading.style.display = "none";
       searchContainer.style.display = "none";
@@ -283,7 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let showingSlide = 0;
   let autoSlideTimer;
 
-  // Clone first slide and append at the end for smooth loop
   const firstClone = slides[0].cloneNode(true);
   slider.appendChild(firstClone);
 
@@ -295,22 +289,17 @@ document.addEventListener("DOMContentLoaded", () => {
     showingSlide = index;
   }
 
-  // Next slide
   function nextSlide() {
     if (showingSlide >= slideCount) {
-      // Jump instantly to original first slide (no animation)
       goToSlide(0, false);
-      // Then slide to second slide
       setTimeout(() => goToSlide(1), 20);
     } else {
       goToSlide(showingSlide + 1);
     }
   }
 
-  // Previous slide
   function prevSlide() {
     if (showingSlide <= 0) {
-      // Jump instantly to clone slide
       goToSlide(slideCount, false);
       setTimeout(() => goToSlide(slideCount - 1), 20);
     } else {
@@ -318,7 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Start auto-slide
   function startAutoSlide() {
     clearInterval(autoSlideTimer);
     autoSlideTimer = setInterval(() => {
@@ -326,7 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 
-  // Arrow navigation
   rightArrow.addEventListener("click", () => {
     nextSlide();
     startAutoSlide();
@@ -361,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .querySelectorAll(".faq-question")
           .forEach((q) => q.classList.remove("active"));
 
-        const extraPadding = 32; 
+        const extraPadding = 32;
         answer.style.maxHeight = answer.scrollHeight + extraPadding + "px";
         answer.style.paddingTop = "1rem";
         answer.style.paddingBottom = "1rem";
@@ -411,7 +398,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // scroll to cart helper
   function scrollToCart() {
     const panel = document.getElementById("cartPanel");
     if (panel) panel.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -420,13 +406,11 @@ document.addEventListener("DOMContentLoaded", () => {
   cartToggleDesktop?.addEventListener("click", scrollToCart);
   cartToggleMobile?.addEventListener("click", scrollToCart);
 
-  // header shadow toggle
   window.addEventListener("scroll", () => {
     const header = document.querySelector(".site-header");
     if (header) header.classList.toggle("scrolled", window.scrollY > 0);
   });
 
-  // checkout modal
   if (checkoutBtn && checkoutModal && cancelCheckout && confirmCheckout) {
     checkoutBtn.addEventListener(
       "click",

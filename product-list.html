@@ -76,9 +76,7 @@
 
     <main class="container">
       <section class="content-left">
-        <!-- Products Header -->
         <div class="products-header">
-          <!-- Filters (left) -->
           <div class="filters">
             <button class="filter-btn"><a href="#popular">Popular</a></button>
             <button class="filter-btn">
@@ -91,7 +89,6 @@
             <button class="filter-btn"><a href="#matcha">Matcha</a></button>
           </div>
 
-          <!-- Search (right) -->
           <div class="search-wrap">
             <input
               type="search"
@@ -107,7 +104,6 @@
           </div>
         </div>
 
-        <!-- Search Results Grid -->
         <div
           id="searchResults"
           class="product-grid"
@@ -116,7 +112,6 @@
 
         <div id="noResults" class="no-results"></div>
 
-        <!-- Product grid -->
         <section id="popular" class="product-section">
           <h2 class="section-title" data-original="Popular">Popular</h2>
           <div class="product-grid" id="productGrid">
@@ -266,7 +261,6 @@
           </div>
         </section>
 
-        <!-- Specialty Section -->
         <section id="specialty" class="product-section">
           <h2 class="section-title">Specialty</h2>
           <div class="product-grid" id="specialtyGrid">
@@ -372,7 +366,6 @@
         <section id="coffee" class="product-section">
           <h2 class="section-title" data-original="Coffee">Coffee</h2>
           <div class="product-grid" id="coffeeGrid">
-            <!-- Americano -->
             <article
               class="product-card"
               data-name="Americano"
@@ -393,7 +386,6 @@
               </div>
             </article>
 
-            <!-- Spanish Latte (reuse) -->
             <article
               class="product-card"
               data-name="Spanish Latte"
@@ -419,7 +411,6 @@
               </div>
             </article>
 
-            <!-- Dirty White (reuse) -->
             <article
               class="product-card"
               data-name="Dirty White"
@@ -442,7 +433,6 @@
               </div>
             </article>
 
-            <!-- Cafe Latte -->
             <article
               class="product-card"
               data-name="Cafe Latte"
@@ -463,7 +453,6 @@
               </div>
             </article>
 
-            <!-- Mocha -->
             <article
               class="product-card"
               data-name="Mocha"
@@ -484,7 +473,6 @@
               </div>
             </article>
 
-            <!-- Caramel Macchiato -->
             <article
               class="product-card"
               data-name="Caramel Macchiato"
@@ -516,7 +504,6 @@
         <section id="non-coffee" class="product-section">
           <h2 class="section-title" data-original="Non-Coffee">Non-Coffee</h2>
           <div class="product-grid" id="nonCoffeeGrid">
-            <!-- Pink Quencher (from Popular) -->
             <article
               class="product-card"
               data-name="Pink Quencher"
@@ -540,7 +527,6 @@
               </div>
             </article>
 
-            <!-- Strawberry Latte -->
             <article
               class="product-card"
               data-name="Strawberry Latte"
@@ -567,7 +553,6 @@
               </div>
             </article>
 
-            <!-- Cocoa Latte -->
             <article
               class="product-card"
               data-name="Cocoa Latte"
@@ -588,7 +573,6 @@
               </div>
             </article>
 
-            <!-- Green Apple Fizz -->
             <article
               class="product-card"
               data-name="Green Apple Fizz"
@@ -615,7 +599,6 @@
               </div>
             </article>
 
-            <!-- Batirol Oatside -->
             <article
               class="product-card"
               data-name="Batirol Oatside"
@@ -647,7 +630,6 @@
         <section id="matcha" class="product-section">
           <h2 class="section-title" data-original="Matcha">Matcha</h2>
           <div class="product-grid" id="matchaGrid">
-            <!-- Matcha Oatside (from Popular) -->
             <article
               class="product-card"
               data-name="Matcha Oatside"
@@ -671,7 +653,6 @@
               </div>
             </article>
 
-            <!-- Matcha Sea Salt (from Popular) -->
             <article
               class="product-card"
               data-name="Matcha Sea Salt"
@@ -698,7 +679,6 @@
               </div>
             </article>
 
-            <!-- Matcha Lime Soda -->
             <article
               class="product-card"
               data-name="Matcha Lime Soda"
@@ -725,7 +705,6 @@
               </div>
             </article>
 
-            <!-- Strawberry Matcha -->
             <article
               class="product-card"
               data-name="Strawberry Matcha"
@@ -752,7 +731,6 @@
               </div>
             </article>
 
-            <!-- Dirty Matcha -->
             <article
               class="product-card"
               data-name="Dirty Matcha"
@@ -809,7 +787,6 @@
       </aside>
     </main>
 
-    <!-- Confirmation Modal -->
     <div id="checkoutModal" class="modal">
       <div class="modal-content">
         <h3>Confirm Order</h3>
@@ -821,46 +798,44 @@
       </div>
     </div>
 
-    <script src="js/script.js"></script>
-
     <footer class="footer">
       <div class="footer-container">
         <!-- LEFT SIDE LINKS -->
         <div class="footer-links">
           <div class="footer-column">
-            <h4>Shop</h4>
+            <h4>Order Online</h4>
             <ul>
-              <li><a href="#">All Coffee</a></li>
-              <li><a href="#">Equipment</a></li>
-              <li><a href="#">Coffee Gifts</a></li>
-              <li><a href="#">Refer a Friend</a></li>
+              <li><a href="product-list.html#specialty">Specialty</a></li>
+              <li><a href="product-list.html#coffee">Coffee</a></li>
+              <li><a href="product-list.html#non-coffee">Non-Coffee</a></li>
+              <li><a href="product-list.html#matcha">Matcha</a></li>
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Learn</h4>
+            <h4>Feature</h4>
             <ul>
-              <li><a href="#">Brewing How-To's</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Our Roasters</a></li>
-              <li><a href="#">Take the Quiz</a></li>
+              <li>
+                <a href="index.html#customer-favorites">Customer Favorites</a>
+              </li>
+              <li><a href="feature.html#new-product">New Product</a></li>
+              <li><a href="feature.html#featured-items">Featured Items</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h4>Support</h4>
             <ul>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Phone: (888) 252-8691</a></li>
-              <li><a href="#">SMS: (424) 238-3630</a></li>
-              <li><a href="#">Mon-Fri 9-5 PM EST</a></li>
+              <li><a href="index.html#faq">FAQs</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="#">Phone: 0947-191-8437</a></li>
+              <li><a href="#">Mon-Sun: 10 AM - 11 PM</a></li>
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Company</h4>
+            <h4>Get to Know Us</h4>
             <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Roaster Submissions</a></li>
+              <li><a href="index.html#about">About Us</a></li>
+              <li><a href="index.html#testimonials">Testimonials</a></li>
+              <li><a href="index.html#brew-guides">Brew Guides</a></li>
             </ul>
           </div>
         </div>
@@ -873,17 +848,58 @@
             <button type="submit">Submit</button>
           </form>
           <div class="footer-socials">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61550342585463"
+              target="_blank"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://www.instagram.com/agoscoffee____/" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.tiktok.com/@agos.coffee" target="_blanks"
+              ><i class="fab fa-tiktok"></i
+            ></a>
           </div>
         </div>
       </div>
 
-      <!-- BOTTOM STRIP -->
+      <!-- Newsletter Modal -->
+      <div id="newsletterModal" class="modal">
+        <div class="modal-content">
+          <h3>Thank You!</h3>
+          <p>You've successfully signed up for our newsletter.</p>
+          <div class="modal-actions">
+            <button class="btn cancel-btn" id="closeNewsletter">Close</button>
+          </div>
+        </div>
+      </div>
+
       <div class="footer-bottom">
         <p>&copy; 2025 Agos Coffee. All Rights Reserved.</p>
       </div>
     </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector(".newsletter-form");
+        const modal = document.getElementById("newsletterModal");
+        const closeBtn = document.getElementById("closeNewsletter");
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault(); 
+          modal.style.display = "flex"; 
+          form.reset(); 
+        });
+
+        closeBtn.addEventListener("click", () => {
+          modal.style.display = "none"; 
+        });
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) modal.style.display = "none";
+        });
+      });
+    </script>
   </body>
 </html>
