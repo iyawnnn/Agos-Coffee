@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dotsContainer = document.querySelector(".slider-dots");
   const cards = document.querySelectorAll(".brew-card");
 
-  let cart = []; // { name, price, img, qty }
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   window.addEventListener("scroll", () => {
     const header = document.querySelector(".site-header");
@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (idx === -1) return;
     cart[idx].qty += delta;
     if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    localStorage.setItem("cart", JSON.stringify(cart)); // save
     updateCartUI();
   }
 
@@ -131,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       cart.push({ name, price: Number(price), img, qty: 1 });
     }
+    localStorage.setItem("cart", JSON.stringify(cart)); // save
     updateCartUI();
   }
 
@@ -366,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function getCardsPerView() {
       if (window.innerWidth <= 600) return 1;
       if (window.innerWidth <= 1024) return 2;
-      return 3; 
+      return 3;
     }
 
     function createBrewDots() {
@@ -396,7 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("resize", () => {
       createBrewDots();
-      moveToBrewSlide(0); 
+      moveToBrewSlide(0);
     });
 
     createBrewDots();
