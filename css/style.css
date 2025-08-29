@@ -266,6 +266,14 @@ main {
   gap: 1rem;
 }
 
+#popular,
+#specialty,
+#coffee,
+#non-coffee,
+#matcha {
+  scroll-margin-top: 80px; 
+}
+
 .filter-btn {
   background: transparent;
   border: none;
@@ -278,6 +286,7 @@ main {
   transition: all 0.2s ease;
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
+    text-decoration: none;
 }
 
 .filter-btn:hover,
@@ -288,7 +297,7 @@ main {
 
 .filter-btn a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
   display: block;
   width: 100%;
   height: 100%;
@@ -1389,10 +1398,12 @@ main.thank-you {
 
 .testimonial-arrow-border.left {
   left: 90px;
+  color: #000;
 }
 
 .testimonial-arrow-border.right {
   right: 90px;
+  color: #000;
 }
 
 .testimonial-arrow {
@@ -1462,6 +1473,7 @@ main.thank-you {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
   box-sizing: border-box;
+  color: #000;
 }
 
 .faq-answer {
@@ -1978,7 +1990,7 @@ main.thank-you {
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-} 
+}
 
 .scroll-banner {
   width: 100%;
@@ -2191,7 +2203,7 @@ main.thank-you {
 
 .highlight-card img {
   width: 100%;
-  aspect-ratio: 1 / 1; 
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 2px solid #000;
   margin-bottom: 15px;
@@ -2204,14 +2216,14 @@ main.thank-you {
   font-weight: 700;
   color: #000;
   margin-bottom: 10px;
-  text-align: left; 
+  text-align: left;
 }
 
 .highlight-card p {
   font-size: clamp(0.9rem, 2vw, 1rem);
   color: #333;
   line-height: 1.5;
-  text-align: left; 
+  text-align: left;
 }
 
 .highlight-card .product-cta {

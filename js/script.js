@@ -31,16 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCartUI() {
+    cart = JSON.parse(localStorage.getItem("cart")) || []; // refresh cart here
+
     if (!cartBody || !cartTotalEl) return;
     cartBody.innerHTML = "";
 
     if (cart.length === 0) {
       cartBody.innerHTML = `
-      <div class="empty-illustration">
-        <img src="assets/icons/CART-PANEL.svg" alt="Empty Cart" class="empty-cart-img" />
-        <h4>Hungry?</h4>
-        <p>You haven't added anything to your cart!</p>
-      </div>`;
+    <div class="empty-illustration">
+      <img src="assets/icons/CART-PANEL.svg" alt="Empty Cart" class="empty-cart-img" />
+      <h4>Hungry?</h4>
+      <p>You haven't added anything to your cart!</p>
+    </div>`;
       cartTotalEl.innerText = formatPeso(0);
       updateCartCount(0);
       checkoutBtn?.classList.remove("enabled");
@@ -52,29 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemEl = document.createElement("div");
       itemEl.className = "cart-item";
       itemEl.innerHTML = `
-      <img src="${item.img}" alt="${item.name}" />
-      <div class="cart-item-details">
-        <h4 class="cart-item-name">${item.name}</h4>
-        <div class="cart-item-price">${formatPeso(item.price)}</div>
-        <div class="qty-controls">
-          <button class="qty-btn decrease" data-name="${
-            item.name
-          }" style="background: var(--primary);">
-            ${
-              item.qty === 1
-                ? `<img src="assets/icons/TRASH-ICON.svg" width="14" height="14" alt="Remove">`
-                : `<span class="minus-sign">-</span>`
-            }
-          </button>
-          <div class="qty-count">${item.qty}</div>
-          <button class="qty-btn increase" data-name="${
-            item.name
-          }" style="background: var(--primary);">
-            <span class="plus-sign">+</span>
-          </button>
-        </div>
+    <img src="${item.img}" alt="${item.name}" />
+    <div class="cart-item-details">
+      <h4 class="cart-item-name">${item.name}</h4>
+      <div class="cart-item-price">${formatPeso(item.price)}</div>
+      <div class="qty-controls">
+        <button class="qty-btn decrease" data-name="${
+          item.name
+        }" style="background: var(--primary);">
+          ${
+            item.qty === 1
+              ? `<img src="assets/icons/TRASH-ICON.svg" width="14" height="14" alt="Remove">`
+              : `<span class="minus-sign">-</span>`
+          }
+        </button>
+        <div class="qty-count">${item.qty}</div>
+        <button class="qty-btn increase" data-name="${
+          item.name
+        }" style="background: var(--primary);">
+          <span class="plus-sign">+</span>
+        </button>
       </div>
-    `;
+    </div>
+  `;
       cartBody.appendChild(itemEl);
     });
 
@@ -137,24 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCartCount(count) {
-    if (count > 0) {
-      if (cartCountDesktop) {
-        cartCountDesktop.textContent = count;
-        cartCountDesktop.style.display = "inline-flex";
-      }
-      if (cartCountMobile) {
-        cartCountMobile.textContent = count;
-        cartCountMobile.style.display = "inline-flex";
-      }
-    } else {
-      if (cartCountDesktop) {
-        cartCountDesktop.textContent = "";
-        cartCountDesktop.style.display = "none";
-      }
-      if (cartCountMobile) {
-        cartCountMobile.textContent = "";
-        cartCountMobile.style.display = "none";
-      }
+    if (cartCountDesktop) {
+      cartCountDesktop.textContent = count > 0 ? count : "";
+      cartCountDesktop.style.display = count > 0 ? "inline-flex" : "none";
+    }
+    if (cartCountMobile) {
+      cartCountMobile.textContent = count > 0 ? count : "";
+      cartCountMobile.style.display = count > 0 ? "inline-flex" : "none";
     }
   }
 
@@ -444,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
     confirmCheckout.addEventListener(
       "click",
       () => (window.location.href = "checkout.html")
-    );
+    ); 
   }
 
   updateCartUI();

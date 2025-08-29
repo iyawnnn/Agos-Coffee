@@ -64,7 +64,7 @@
           aria-label="Open cart"
         >
           <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
-          <span class="cart-count">0</span>
+          <span id="cart-count" class="cart-count">0</span>
         </a>
       </div>
     </header>
@@ -103,15 +103,11 @@
       <section class="content-left">
         <div class="products-header">
           <div class="filters">
-            <button class="filter-btn"><a href="#popular">Popular</a></button>
-            <button class="filter-btn">
-              <a href="#specialty">Specialty</a>
-            </button>
-            <button class="filter-btn"><a href="#coffee">Coffee</a></button>
-            <button class="filter-btn">
-              <a href="#non-coffee">Non-Coffee</a>
-            </button>
-            <button class="filter-btn"><a href="#matcha">Matcha</a></button>
+            <a class="filter-btn" href="#popular">Popular</a>
+            <a class="filter-btn" href="#specialty">Specialty</a>
+            <a class="filter-btn" href="#coffee">Coffee</a>
+            <a class="filter-btn" href="#non-coffee">Non-Coffee</a>
+            <a class="filter-btn" href="#matcha">Matcha</a>
           </div>
 
           <div class="search-wrap">
@@ -905,7 +901,7 @@
     </footer>
 
     <script src="js/hamburger-menu.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.querySelector(".newsletter-form");
@@ -925,6 +921,21 @@
         modal.addEventListener("click", (e) => {
           if (e.target === modal) modal.style.display = "none";
         });
+
+        const cartCountDesktop = document.getElementById("cart-count");
+        const cartCountMobile = document.getElementById("cart-count-mobile");
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+        if (cartCountDesktop) {
+          cartCountDesktop.textContent = totalCount > 0 ? totalCount : "";
+          cartCountDesktop.style.display =
+            totalCount > 0 ? "inline-flex" : "none";
+        }
+        if (cartCountMobile) {
+          cartCountMobile.textContent = totalCount > 0 ? totalCount : "";
+          cartCountMobile.style.display =
+            totalCount > 0 ? "inline-flex" : "none";
+        }
       });
     </script>
   </body>

@@ -64,7 +64,7 @@
           aria-label="Open cart"
         >
           <img src="assets/icons/CART-QTY.svg" alt="Cart" class="cart-img" />
-          <span class="cart-count">0</span>
+          <span id="cart-count" class="cart-count">0</span>
         </a>
       </div>
     </header>
@@ -701,7 +701,7 @@
     </footer>
 
     <script src="js/hamburger-menu.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.querySelector(".newsletter-form");
@@ -721,6 +721,21 @@
         modal.addEventListener("click", (e) => {
           if (e.target === modal) modal.style.display = "none";
         });
+
+        const cartCountDesktop = document.getElementById("cart-count");
+        const cartCountMobile = document.getElementById("cart-count-mobile");
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+        if (cartCountDesktop) {
+          cartCountDesktop.textContent = totalCount > 0 ? totalCount : "";
+          cartCountDesktop.style.display =
+            totalCount > 0 ? "inline-flex" : "none";
+        }
+        if (cartCountMobile) {
+          cartCountMobile.textContent = totalCount > 0 ? totalCount : "";
+          cartCountMobile.style.display =
+            totalCount > 0 ? "inline-flex" : "none";
+        }
       });
     </script>
   </body>
