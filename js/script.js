@@ -31,22 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCartUI() {
-    cart = JSON.parse(localStorage.getItem("cart")) || []; // refresh cart here
-
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (!cartBody || !cartTotalEl) return;
     cartBody.innerHTML = "";
 
     if (cart.length === 0) {
       cartBody.innerHTML = `
-    <div class="empty-illustration">
-      <img src="assets/icons/CART-PANEL.svg" alt="Empty Cart" class="empty-cart-img" />
-      <h4>Hungry?</h4>
-      <p>You haven't added anything to your cart!</p>
-    </div>`;
+        <div class="empty-illustration">
+          <img src="assets/icons/CART-PANEL.svg" alt="Empty Cart" class="empty-cart-img" />
+          <h4>Hungry?</h4>
+          <p>You haven't added anything to your cart!</p>
+        </div>`;
       cartTotalEl.innerText = formatPeso(0);
       updateCartCount(0);
       checkoutBtn?.classList.remove("enabled");
-      if (checkoutBtn) checkoutBtn.disabled = true;
+      checkoutBtn.disabled = true;
       return;
     }
 
@@ -54,29 +53,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemEl = document.createElement("div");
       itemEl.className = "cart-item";
       itemEl.innerHTML = `
-    <img src="${item.img}" alt="${item.name}" />
-    <div class="cart-item-details">
-      <h4 class="cart-item-name">${item.name}</h4>
-      <div class="cart-item-price">${formatPeso(item.price)}</div>
-      <div class="qty-controls">
-        <button class="qty-btn decrease" data-name="${
-          item.name
-        }" style="background: var(--primary);">
-          ${
-            item.qty === 1
-              ? `<img src="assets/icons/TRASH-ICON.svg" width="14" height="14" alt="Remove">`
-              : `<span class="minus-sign">-</span>`
-          }
-        </button>
-        <div class="qty-count">${item.qty}</div>
-        <button class="qty-btn increase" data-name="${
-          item.name
-        }" style="background: var(--primary);">
-          <span class="plus-sign">+</span>
-        </button>
-      </div>
-    </div>
-  `;
+        <img src="${item.img}" alt="${item.name}" />
+        <div class="cart-item-details">
+          <h4 class="cart-item-name">${item.name}</h4>
+          <div class="cart-item-price">${formatPeso(item.price)}</div>
+          <div class="qty-controls">
+            <button class="qty-btn decrease" data-name="${
+              item.name
+            }" style="background: var(--primary);">
+              ${
+                item.qty === 1
+                  ? `<img src="assets/icons/TRASH-ICON.svg" width="14" height="14" alt="Remove">`
+                  : `<span class="minus-sign">-</span>`
+              }
+            </button>
+            <div class="qty-count">${item.qty}</div>
+            <button class="qty-btn increase" data-name="${
+              item.name
+            }" style="background: var(--primary);">
+              <span class="plus-sign">+</span>
+            </button>
+          </div>
+        </div>
+      `;
       cartBody.appendChild(itemEl);
     });
 
@@ -103,6 +102,17 @@ document.addEventListener("DOMContentLoaded", () => {
       );
   }
 
+  function updateCartCount(count) {
+    if (cartCountDesktop) {
+      cartCountDesktop.textContent = count > 0 ? count : "";
+      cartCountDesktop.style.display = count > 0 ? "inline-flex" : "none";
+    }
+    if (cartCountMobile) {
+      cartCountMobile.textContent = count > 0 ? count : "";
+      cartCountMobile.style.display = count > 0 ? "inline-flex" : "none";
+    }
+  }
+
   if (checkoutBtn && checkoutModal && cancelCheckout && confirmCheckout) {
     checkoutBtn.addEventListener("click", () => {
       if (cart.length > 0) checkoutModal.style.display = "flex";
@@ -113,6 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     confirmCheckout.addEventListener("click", () => {
+      localStorage.removeItem("cart");
+      cart = [];
+      updateCartUI();
+      updateCartCount(0);
       checkoutModal.style.display = "none";
       window.location.href = "checkout.html";
     });
@@ -123,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (idx === -1) return;
     cart[idx].qty += delta;
     if (cart[idx].qty <= 0) cart.splice(idx, 1);
-    localStorage.setItem("cart", JSON.stringify(cart)); // save
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartUI();
   }
 
@@ -134,19 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       cart.push({ name, price: Number(price), img, qty: 1 });
     }
-    localStorage.setItem("cart", JSON.stringify(cart)); // save
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartUI();
-  }
-
-  function updateCartCount(count) {
-    if (cartCountDesktop) {
-      cartCountDesktop.textContent = count > 0 ? count : "";
-      cartCountDesktop.style.display = count > 0 ? "inline-flex" : "none";
-    }
-    if (cartCountMobile) {
-      cartCountMobile.textContent = count > 0 ? count : "";
-      cartCountMobile.style.display = count > 0 ? "inline-flex" : "none";
-    }
   }
 
   document.addEventListener("click", (e) => {
@@ -161,8 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const img = card.dataset.img;
 
     addToCart(name, price, img);
-
-    // Button animation
     btn.animate(
       [
         { transform: "scale(1.0)" },
@@ -172,6 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
       { duration: 180, easing: "ease-out" }
     );
   });
+
+  updateCartUI();
 
   function runSearch(rawValue) {
     const value = String(rawValue || "")
@@ -214,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
           !addedNames.has(name)
         ) {
           hasMatch = true;
-          addedNames.add(name); // Mark as added
+          addedNames.add(name);
           searchContainer.appendChild(card.cloneNode(true));
         }
       });
@@ -423,20 +426,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (header) header.classList.toggle("scrolled", window.scrollY > 0);
   });
 
-  if (checkoutBtn && checkoutModal && cancelCheckout && confirmCheckout) {
-    checkoutBtn.addEventListener(
-      "click",
-      () => (checkoutModal.style.display = "flex")
-    );
-    cancelCheckout.addEventListener(
-      "click",
-      () => (checkoutModal.style.display = "none")
-    );
-    confirmCheckout.addEventListener(
-      "click",
-      () => (window.location.href = "checkout.html")
-    ); 
-  }
-
-  updateCartUI();
+  window.addEventListener("storage", () => {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    updateCartUI();
+  });
 });
