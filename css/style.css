@@ -61,7 +61,7 @@ main {
   z-index: 999;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease;
-  height: 95px; /* match body padding-top */
+  height: 95px; 
   box-sizing: border-box;
 }
 
@@ -87,9 +87,9 @@ main {
 /* Layout: Hamburger | Logo | Cart */
 .header-left {
   display: flex;
-  justify-content: center; /* centers children horizontally */
-  align-items: center; /* centers vertically if needed */
-  gap: 10px; /* optional spacing if multiple elements */
+  justify-content: center; 
+  align-items: center; 
+  gap: 10px; 
   flex: 0 0 auto;
 }
 
@@ -897,7 +897,7 @@ main.thank-you {
 }
 
 .about-text {
-  font-size: clamp(0.9rem, 1.2vw, 1.25rem); /* responsive text */
+  font-size: clamp(0.9rem, 1.2vw, 1.25rem); 
   color: #f8f8f8;
   line-height: 1.8;
   margin-bottom: 1rem;
@@ -1949,7 +1949,7 @@ main.thank-you {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  height: 250px; /* reduced height for desktop */
+  height: 250px;
 }
 
 .feature-text-block {
