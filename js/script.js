@@ -263,6 +263,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document.querySelectorAll(".filter-btn").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href") || "";
+      if (!href.startsWith("#")) return; 
+
+      if (searchInput && searchInput.value.trim() !== "") {
+        searchInput.value = "";
+        if (typeof runSearch === "function") runSearch("");
+      }
+      if (mobileSearchInput && mobileSearchInput.value.trim() !== "") {
+        mobileSearchInput.value = "";
+        if (typeof runSearch === "function") runSearch("");
+      }
+
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      const header = document.querySelector(".site-header");
+      let yOffset = 0;
+      if (header) {
+        const hdrStyle = getComputedStyle(header);
+        if (hdrStyle.position === "fixed" || hdrStyle.position === "sticky") {
+          yOffset = -header.offsetHeight - 8; 
+        }
+      }
+
+      const targetY =
+        target.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+
+      document
+        .querySelectorAll(".filter-btn")
+        .forEach((b) => b.classList.remove("active"));
+      link.classList.add("active");
+
+      searchInput?.blur();
+      mobileSearchInput?.blur();
+    });
+  });
+
   const slider = document.querySelector(".testimonial-slider");
   const leftArrow = document.querySelector(".testimonial-arrow.left");
   const rightArrow = document.querySelector(".testimonial-arrow.right");
@@ -382,20 +423,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const cardsPerView = getCardsPerView();
       currentIndex = index;
 
-      const offset = -(index * (100 / cardsPerView));
+      const offset = -(index * 100);
       brewSliderTrack.style.transform = `translateX(${offset}%)`;
 
-      document.querySelectorAll(".slider-dots button").forEach((dot, idx) => {
+      // Update active dot
+      brewDotsContainer.querySelectorAll("button").forEach((dot, idx) => {
         dot.classList.toggle("active", idx === index);
       });
     }
 
-    window.addEventListener("resize", () => {
-      createBrewDots();
-      moveToBrewSlide(0);
-    });
+    function updateSlider() {
+      const cardsPerView = getCardsPerView();
+      brewCards.forEach((card) => {
+        card.style.flex = `0 0 ${100 / cardsPerView}%`;
+      });
 
-    createBrewDots();
+      const prevIndex = currentIndex;
+      createBrewDots();
+      moveToBrewSlide(
+        prevIndex >= Math.ceil(brewCards.length / cardsPerView) ? 0 : prevIndex
+      );
+    }
+
+    window.addEventListener("resize", updateSlider);
+
+    updateSlider();
   })();
 
   const mobileSearchWrapper = document.querySelector(".mobile-search-wrapper");
